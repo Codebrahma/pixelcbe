@@ -1,0 +1,89 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pixel Coimbatore</title>
+<meta name="description" content="Central Coimbatore as one explorable isometric pixel-art map: Race Course, R.S. Puram, Gandhipuram, Town Hall, Ukkadam and Peelamedu.">
+<link rel="canonical" href="https://pixelcbe.com/">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Pixel Coimbatore"><meta property="og:title" content="Pixel Coimbatore · கோயம்புத்தூர்">
+<meta property="og:description" content="Central Coimbatore as one explorable isometric pixel-art map."><meta property="og:url" content="https://pixelcbe.com/">
+<meta property="og:image" content="https://pixelcbe.com/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://pixelcbe.com/og.jpg">
+<meta name="theme-color" content="#201e1c">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@500;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"></script>
+<style>
+html,body{margin:0;height:100%;background:#201e1c;font-family:system-ui,-apple-system,'Noto Sans Tamil',sans-serif;overflow:hidden}
+#map{position:absolute;inset:0}
+.chip{position:absolute;background:#fffdf7;border-radius:10px;padding:8px 12px;box-shadow:0 2px 10px #0006;font-size:14px;z-index:5}
+.brand{top:12px;left:12px;font-weight:800;letter-spacing:.2px}.brand span{font-weight:500;color:#8a6d3b;margin-left:6px}
+.tools{top:12px;right:12px;display:flex;gap:6px;padding:6px}
+.tools button{border:0;background:#efe8da;border-radius:7px;padding:6px 10px;font:inherit;cursor:pointer}
+.tools button.on{background:#2f2a24;color:#fff}
+.search{top:62px;right:12px;padding:6px;width:240px}.search input{width:100%;box-sizing:border-box;border:0;background:#efe8da;border-radius:7px;padding:7px 9px;font:inherit}
+#res{margin-top:4px;max-height:240px;overflow:auto}#res div{padding:5px 6px;cursor:pointer;border-radius:5px}#res div:hover{background:#efe8da}
+.cred{bottom:6px;right:10px;font-size:10px;color:#555;padding:4px 8px}
+.strip{left:50%;transform:translateX(-50%);bottom:30px;display:flex;align-items:center;gap:6px;padding:8px;max-width:min(1100px,calc(100vw - 24px));box-sizing:border-box}
+.strip .row{display:flex;gap:8px;overflow-x:auto;scroll-behavior:smooth;scrollbar-width:none}.strip .row::-webkit-scrollbar{display:none}
+.strip .card{flex:0 0 150px;cursor:pointer;border-radius:8px;overflow:hidden;background:#efe8da;border:2px solid transparent}
+.strip .card.on{border-color:#c0602a}
+.strip .card img{display:block;width:150px;height:95px;object-fit:cover;image-rendering:pixelated}
+.strip .card b{display:block;font-size:12px;padding:4px 6px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.strip .card i{display:block;font-style:normal;font-size:11px;color:#8a6d3b;padding:0 6px 5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.strip .nav{border:0;background:#2f2a24;color:#fff;border-radius:7px;width:28px;height:60px;cursor:pointer;font-size:16px;flex:0 0 auto}
+.strip.hide .row,.strip.hide .nav.n2{display:none}
+@media (max-width:600px){.strip .card{flex-basis:118px}.strip .card img{width:118px;height:75px}.search{width:180px}}
+.openseadragon-canvas canvas{image-rendering:pixelated}
+.lbl{position:absolute;transform:translate(-50%,-100%);white-space:nowrap;pointer-events:none;font-weight:700;color:#fff;
+ text-shadow:0 0 3px #000,0 0 3px #000,0 1px 2px #000;font-size:13px}
+.lbl.area,.lbl.anchor{font-size:16px;letter-spacing:.3px}.lbl.poi{font-size:11px;font-weight:600;color:#ffe9b0}.lbl.major{font-size:12.5px;font-weight:700;color:#ffd77a}
+#hint{position:fixed;left:50%;top:70px;transform:translateX(-50%);background:rgba(20,18,16,.78);color:#fff;padding:8px 14px;border-radius:20px;font:600 13px system-ui,sans-serif;z-index:20;pointer-events:none;transition:opacity .6s;white-space:nowrap}
+</style></head><body>
+<div id="map"></div>
+<div class="chip brand">Pixel Coimbatore <span>கோயம்புத்தூர்</span></div>
+<div class="chip tools"><button id="bAi" class="on" title="L">AI painting</button><button id="bLbl" class="on" title="N">Names</button><button id="bLang">தமிழ்</button></div>
+<div class="chip search"><input id="q" placeholder="Search a place…" autocomplete="off"><div id="res"></div></div>
+<div class="chip strip" id="strip"><button class="nav" id="pv" aria-label="Earlier places">‹</button><div class="row" id="row"></div><button class="nav n2" id="nx" aria-label="Later places">›</button></div>
+<div class="chip cred">© OpenStreetMap contributors · Overture Maps · Google imagery as reference · painted with AI · <a href="credits.html" style="color:inherit">credits</a> · <a href="https://github.com/Codebrahma/pixelcbe" style="color:inherit" target="_blank">source</a> · built with <a href="https://brahma.sh" style="color:inherit" target="_blank">Brahma</a></div>
+<script>
+OpenSeadragon.setImageFormatsSupported({webp:true});
+const P=new URLSearchParams(location.search);
+const AI=P.get('ai')||'https://tiles.pixelcbe.com/v15/core_ai.dzi', BASE=P.get('base')||'https://tiles.pixelcbe.com/v15/core_base.dzi';
+const v=OpenSeadragon({id:'map',prefixUrl:'https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/images/',showNavigationControl:false,
+  maxZoomPixelRatio:3,visibilityRatio:0.5,animationTime:0.6,imageSmoothingEnabled:false,
+  tileSources:[{tileSource:BASE},{tileSource:AI}]});
+let ai=true,showL=true,ta=false,labels=[],els=[];
+const $=id=>document.getElementById(id);
+function setAi(x){ai=x;const it=v.world.getItemAt(1);if(it)it.setOpacity(ai?1:0);$('bAi').classList.toggle('on',ai);$('bAi').textContent=ai?'AI painting':'Base map'}
+$('bAi').onclick=()=>setAi(!ai);$('bLbl').onclick=()=>{showL=!showL;$('bLbl').classList.toggle('on',showL);draw()};
+$('bLang').onclick=()=>{ta=!ta;$('bLang').textContent=ta?'English':'தமிழ்';els.forEach(e=>e.remove());els=[];mk();draw()};
+addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;if(e.key==='l'||e.key==='L')setAi(!ai);if(e.key==='n'||e.key==='N')$('bLbl').click()});
+function mk(){els=labels.map(l=>{const d=document.createElement('div');d.className='lbl '+l.k;d.textContent=(ta&&l.ta)||l.n;$('map').appendChild(d);return d})}
+function draw(){const it=(v.world.getItemAt(1)||v.world.getItemAt(0));if(!it)return;const z=v.viewport.getZoom(true)*v.viewport.getContainerSize().x/it.source.dimensions.x;
+  const sz=v.viewport.getContainerSize();
+  const pr={anchor:0,major:1,poi:2};const ord=labels.map((l,i)=>i).sort((a,b)=>(pr[labels[a].k]??1)-(pr[labels[b].k]??1));const placed=[];
+  ord.forEach(i=>{const l=labels[i];const e=els[i];const show=showL&&(l.k==='poi'?z>0.35:l.k==='major'?z>0.16:true);
+    if(!show){e.style.display='none';return}
+    const p=it.imageToViewerElementCoordinates(new OpenSeadragon.Point(l.x,l.y));
+    if(p.x<-50||p.y<-20||p.x>sz.x+50||p.y>sz.y+40){e.style.display='none';return}
+    const w=(e._w||(e.style.display='block',e._w=e.offsetWidth||80)),h=(e._h||(e._h=e.offsetHeight||16));
+    const bx=[p.x-w/2-4,p.y-h-2,p.x+w/2+4,p.y+2];
+    if(placed.some(q=>bx[0]<q[2]&&bx[2]>q[0]&&bx[1]<q[3]&&bx[3]>q[1])){e.style.display='none';return}
+    placed.push(bx);e.style.display='block';e.style.left=p.x+'px';e.style.top=p.y+'px'})}
+v.addHandler('animation',draw);v.addHandler('open',()=>{setAi(true);draw();if(!location.hash&&!P.get('place'))intro()});
+function intro(){const it=v.world.getItemAt(1)||v.world.getItemAt(0);if(!it)return;const mob=innerWidth<700;
+  const R=[34856,14851,6433,6794];const rect=it.imageToViewportRectangle(R[0],R[1],R[2],R[3]);
+  const wide=it.imageToViewportRectangle(R[0]-R[2]*0.75,R[1]-R[3]*0.75,R[2]*2.5,R[3]*2.5);
+  v.viewport.fitBounds(wide,true);setTimeout(()=>v.viewport.fitBounds(rect),700);
+  const h=document.createElement('div');h.id='hint';h.textContent=mob?'Drag to explore · pinch to zoom':'Drag to explore · scroll to zoom · tap a card below to fly there';
+  document.body.appendChild(h);const bye=()=>{h.style.opacity=0;setTimeout(()=>h.remove(),600)};setTimeout(bye,6000);v.addOnceHandler('canvas-drag',bye);v.addOnceHandler('canvas-scroll',bye)}
+v.addHandler('resize',draw);
+function goTo(l,zoom){const it=(v.world.getItemAt(1)||v.world.getItemAt(0));if(!it)return;const vp=it.imageToViewportCoordinates(l.x,l.y);v.viewport.panTo(vp,true);v.viewport.zoomTo(it.imageToViewportZoom(zoom||0.9),null,true)}
+fetch('labels.json?v=15').then(r=>r.json()).then(j=>{labels=j;mk();draw();const pl=P.get('place');if(pl){const go=()=>{const l=labels.find(l=>l.n.toLowerCase()===pl.toLowerCase());if(l)goTo(l,+(P.get('z')||0.9));draw()};(v.world.getItemAt(1)||v.world.getItemAt(0))?go():v.addOnceHandler('open',go);setTimeout(go,1500);setTimeout(go,3500)}});
+fetch('landmarks.json?v=15').then(r=>r.json()).then(L=>{const row=$('row');
+  L.forEach((l,i)=>{const c=document.createElement('div');c.className='card';c.innerHTML=`<img loading="lazy" src="thumbs/${l.id}.webp?v=15" alt=""><b>${l.n}</b><i lang="ta">${l.ta}</i>`;
+    c.onclick=()=>{document.querySelectorAll('.card.on').forEach(e=>e.classList.remove('on'));c.classList.add('on');goTo(l,1.1);history.replaceState(null,'','#'+l.id)};row.appendChild(c)});
+  $('pv').onclick=()=>row.scrollBy({left:-row.clientWidth*0.8});$('nx').onclick=()=>row.scrollBy({left:row.clientWidth*0.8});
+  const h=location.hash.slice(1);if(h){const i=L.findIndex(l=>l.id===h);if(i>=0){const go=()=>row.children[i].click();setTimeout(go,1500);setTimeout(go,3500)}}});
+$('q').oninput=()=>{const q=$('q').value.trim().toLowerCase();const r=$('res');r.innerHTML='';if(q.length<2)return;
+  labels.filter(l=>l.n.toLowerCase().includes(q)||(l.ta||'').includes(q)).slice(0,12).forEach(l=>{const d=document.createElement('div');d.textContent=(ta&&l.ta)||l.n;
+  d.onclick=()=>{const it=(v.world.getItemAt(1)||v.world.getItemAt(0));const vp=it.imageToViewportCoordinates(l.x,l.y);v.viewport.panTo(vp);v.viewport.zoomTo(it.imageToViewportZoom(0.9));r.innerHTML=''};r.appendChild(d)})};
+</script></body></html>

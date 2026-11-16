@@ -1,0 +1,332 @@
+[
+{
+"n": "Race Course",
+"ta": "ரேஸ் கோர்ஸ்",
+"x": 38943,
+"y": 17803,
+"id": "race-course"
+},
+{
+"n": "Koniamman Temple",
+"ta": "கோனியம்மன் கோவில்",
+"x": 37666,
+"y": 20188,
+"id": "koniamman-temple"
+},
+{
+"n": "Victoria Town Hall",
+"ta": "விக்டோரியா டவுன் ஹால்",
+"x": 37237,
+"y": 20521,
+"id": "victoria-town-hall"
+},
+{
+"n": "Big Bazaar Street",
+"ta": "பெரிய கடை வீதி",
+"x": 37656,
+"y": 20137,
+"id": "big-bazaar-street"
+},
+{
+"n": "Oppanakara Street",
+"ta": "ஒப்பணக்கார வீதி",
+"x": 36157,
+"y": 20352,
+"id": "oppanakara-street"
+},
+{
+"n": "Ukkadam Lake",
+"ta": "உக்கடம் பெரியகுளம்",
+"x": 38428,
+"y": 21225,
+"id": "ukkadam-lake"
+},
+{
+"n": "Valankulam Lake",
+"ta": "வாலாங்குளம்",
+"x": 39650,
+"y": 19481,
+"id": "valankulam-lake"
+},
+{
+"n": "Coimbatore Junction",
+"ta": "கோயம்புத்தூர் சந்திப்பு",
+"x": 37460,
+"y": 19466,
+"id": "coimbatore-junction"
+},
+{
+"n": "Gandhipuram Bus Stand",
+"ta": "காந்திபுரம் பேருந்து நிலையம்",
+"x": 34367,
+"y": 17581,
+"id": "gandhipuram-bus-stand"
+},
+{
+"n": "Karpagam Theatres (Ganga · Yamuna · Kaveri)",
+"ta": "கற்பகம் திரையரங்கம்",
+"x": 32839,
+"y": 17347,
+"id": "karpagam-complex",
+"sub": "Ganga · Yamuna · Kaveri"
+},
+{
+"n": "Cross Cut Road",
+"ta": "கிராஸ் கட் சாலை",
+"x": 32536,
+"y": 18007,
+"id": "cross-cut-road"
+},
+{
+"n": "Brookefields Mall",
+"ta": "ப்ரூக்ஃபீல்ட்ஸ் மால்",
+"x": 33939,
+"y": 18982,
+"id": "brookefields-mall"
+},
+{
+"n": "VOC Park",
+"ta": "வ.உ.சி. பூங்கா",
+"x": 36496,
+"y": 17938,
+"id": "voc-park"
+},
+{
+"n": "Nehru Stadium",
+"ta": "நேரு விளையாட்டரங்கம்",
+"x": 36523,
+"y": 18128,
+"id": "nehru-stadium"
+},
+{
+"n": "Government Hospital",
+"ta": "அரசு மருத்துவமனை",
+"x": 38367,
+"y": 19179,
+"id": "government-hospital"
+},
+{
+"n": "Government Arts College",
+"ta": "அரசு கலைக் கல்லூரி",
+"x": 38298,
+"y": 18760,
+"id": "government-arts-college"
+},
+{
+"n": "Central Jail",
+"ta": "மத்திய சிறை",
+"x": 35415,
+"y": 17043,
+"id": "central-jail"
+},
+{
+"n": "Christ the King Church",
+"ta": "கிறிஸ்து அரசர் ஆலயம்",
+"x": 35682,
+"y": 18597,
+"id": "christ-the-king-church"
+},
+{
+"n": "Gass Forest Museum",
+"ta": "காஸ் வன அருங்காட்சியகம்",
+"x": 29809,
+"y": 19558,
+"id": "gass-forest-museum"
+},
+{
+"n": "Kamatchiamman Temple",
+"ta": "காமாட்சியம்மன் கோவில்",
+"x": 31173,
+"y": 20422,
+"id": "kamatchiamman-temple"
+},
+{
+"n": "Lakshmi Mills",
+"ta": "லட்சுமி மில்ஸ்",
+"x": 38741,
+"y": 15462,
+"id": "lakshmi-mills"
+},
+{
+"n": "Fun Republic Mall",
+"ta": "ஃபன் ரிபப்ளிக் மால்",
+"x": 40678,
+"y": 11669,
+"id": "fun-republic-mall"
+},
+{
+"n": "PSG Hospitals",
+"ta": "பி.எஸ்.ஜி. மருத்துவமனை",
+"x": 41100,
+"y": 12644,
+"id": "psg-hospitals"
+},
+{
+"n": "PSG College of Technology",
+"ta": "பி.எஸ்.ஜி. தொழில்நுட்பக் கல்லூரி",
+"x": 39135,
+"y": 12487,
+"id": "psg-college-of-technology"
+},
+{
+"n": "Peelamedu",
+"ta": "பீளமேடு",
+"x": 37058,
+"y": 11902,
+"id": "peelamedu"
+},
+{
+"n": "Gandhipuram Flyover",
+"ta": "காந்திபுரம் மேம்பாலம்",
+"x": 34146,
+"y": 17133,
+"id": "gandhipuram-flyover"
+},
+{
+"n": "G.D. Naidu Flyover (Avinashi Road)",
+"ta": "ஜி.டி. நாயுடு மேம்பாலம்",
+"x": 38318,
+"y": 15652,
+"id": "gd-naidu-flyover"
+},
+{
+"n": "Coimbatore International Airport",
+"ta": "கோவை சர்வதேச விமான நிலையம்",
+"x": 44895,
+"y": 7891,
+"id": "airport"
+},
+{
+"n": "CODISSIA Trade Fair Complex",
+"ta": "கொடிசியா வர்த்தக கண்காட்சி வளாகம்",
+"x": 42311,
+"y": 7599,
+"id": "codissia"
+},
+{
+"n": "Marudhamalai Temple",
+"ta": "மருதமலை முருகன் கோவில்",
+"x": 6332,
+"y": 26036,
+"id": "marudhamalai"
+},
+{
+"n": "Bharathiar University",
+"ta": "பாரதியார் பல்கலைக்கழகம்",
+"x": 12801,
+"y": 24263,
+"id": "bharathiar-university"
+},
+{
+"n": "TNAU Botanical Garden",
+"ta": "வேளாண் பல்கலை தாவரவியல் பூங்கா",
+"x": 27524,
+"y": 21375,
+"id": "tnau-botanical-garden"
+},
+{
+"n": "Prozone Mall",
+"ta": "ப்ரோசோன் மால்",
+"x": 31447,
+"y": 10090,
+"id": "prozone-mall"
+},
+{
+"n": "Saravanampatti",
+"ta": "சரவணம்பட்டி",
+"x": 27440,
+"y": 7230,
+"id": "saravanampatti"
+},
+{
+"n": "Kumaraguru College of Technology",
+"ta": "குமரகுரு தொழில்நுட்பக் கல்லூரி",
+"x": 25926,
+"y": 8105,
+"id": "kct"
+},
+{
+"n": "KG Cinemas",
+"ta": "கே.ஜி. சினிமாஸ்",
+"x": 38013,
+"y": 18554,
+"id": "kg-cinemas"
+},
+{
+"n": "SRK Miraj Cinemas",
+"ta": "எஸ்.ஆர்.கே. மிராஜ் சினிமாஸ்",
+"x": 54162,
+"y": 8547,
+"id": "srk-miraj"
+},
+{
+"n": "Carmel Garden School",
+"ta": "கார்மல் கார்டன் பள்ளி",
+"x": 41159,
+"y": 16875,
+"id": "carmel-garden"
+},
+{
+"n": "LuLu Hypermarket",
+"ta": "லுலு ஹைப்பர்மார்க்கெட்",
+"x": 38644,
+"y": 15382,
+"id": "lulu-mall"
+},
+{
+"n": "Tamil Nadu Agricultural University",
+"ta": "தமிழ்நாடு வேளாண்மைப் பல்கலைக்கழகம்",
+"x": 29216,
+"y": 21689,
+"id": "tnau-main"
+},
+{
+"n": "KMCH",
+"ta": "கே.எம்.சி.எச்.",
+"x": 42880,
+"y": 6397,
+"id": "kmch"
+},
+{
+"n": "Karattumedu Murugan Temple",
+"ta": "காரட்டுமேடு முருகன் கோவில்",
+"x": 27339,
+"y": 3995,
+"id": "karattumedu"
+},
+{
+"n": "Puliakulam Munthi Vinayagar",
+"ta": "புலியகுளம் முந்தி விநாயகர்",
+"x": 41192,
+"y": 15821,
+"id": "puliakulam-vinayagar"
+},
+{
+"n": "Ayyappan Temple, Siddhapudur",
+"ta": "சித்தாபுதூர் ஐயப்பன் கோவில்",
+"x": 34182,
+"y": 16192,
+"id": "siddhapudur-ayyappan"
+},
+{
+"n": "Collectorate",
+"ta": "மாவட்ட ஆட்சியர் அலுவலகம்",
+"x": 37066,
+"y": 19031,
+"id": "collectorate"
+},
+{
+"n": "Podanur Junction",
+"ta": "போத்தனூர் சந்திப்பு",
+"x": 48057,
+"y": 20729,
+"id": "podanur-junction"
+},
+{
+"n": "Eachanari Vinayagar Temple",
+"ta": "ஈச்சனாரி விநாயகர் கோவில்",
+"x": 52395,
+"y": 28085,
+"id": "eachanari-temple"
+}
+]
